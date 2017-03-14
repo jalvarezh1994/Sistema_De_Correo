@@ -88,10 +88,10 @@ public class Correo implements Serializable {
 
     @Override
     public String toString() {
-        if (Asunto!=null) {
-            return Asunto;
-        }else{
+        if ("".equals(Asunto)) {
             return Remitente;
+        }else{
+            return Asunto;
         }
     }
 

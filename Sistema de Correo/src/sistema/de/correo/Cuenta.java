@@ -23,7 +23,7 @@ public class Cuenta implements Serializable {
     private String Sexo;
     private Date FechaDeCreacion;
     private Date UltimoAcceso;
-    private ArrayList<Date> Citas = new ArrayList();
+    private ArrayList<Date> Reuniones = new ArrayList();
     private ArrayList<String> Entrada = new ArrayList();
     private ArrayList<String> Salida = new ArrayList();
     private ArrayList<String> Spam = new ArrayList();
@@ -139,12 +139,12 @@ public class Cuenta implements Serializable {
         this.Papelera = Papelera;
     }
 
-    public ArrayList<Date> getCitas() {
-        return Citas;
+    public ArrayList<Date> getReuniones() {
+        return Reuniones;
     }
 
-    public void setCitas(ArrayList<Date> Citas) {
-        this.Citas = Citas;
+    public void setReuniones(ArrayList<Date> Reuniones) {
+        this.Reuniones = Reuniones;
     }
 
     @Override
