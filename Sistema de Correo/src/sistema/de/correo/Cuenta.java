@@ -23,8 +23,9 @@ public class Cuenta implements Serializable {
     private String Sexo;
     private Date FechaDeCreacion;
     private Date UltimoAcceso;
+    private ArrayList<String> Contactos = new ArrayList();
     private ArrayList<Date> Reuniones = new ArrayList();
-    private ArrayList<String> Entrada = new ArrayList();
+    private ArrayList<String> BandejaDeEntrada = new ArrayList();
     private ArrayList<String> Salida = new ArrayList();
     private ArrayList<String> Spam = new ArrayList();
     private ArrayList<String> Papelera = new ArrayList();
@@ -107,12 +108,12 @@ public class Cuenta implements Serializable {
         this.UltimoAcceso = UltimoAcceso;
     }
 
-    public ArrayList<String> getEntrada() {
-        return Entrada;
+    public ArrayList<String> getBandejaDeEntrada() {
+        return BandejaDeEntrada;
     }
 
-    public void setEntrada(ArrayList<String> Entrada) {
-        this.Entrada = Entrada;
+    public void setBandejaDeEntrada(ArrayList<String> BandejaDeEntrada) {
+        this.BandejaDeEntrada = BandejaDeEntrada;
     }
 
     public ArrayList<String> getSalida() {
@@ -147,9 +148,17 @@ public class Cuenta implements Serializable {
         this.Reuniones = Reuniones;
     }
 
+    public ArrayList<String> getContactos() {
+        return Contactos;
+    }
+
+    public void setContactos(ArrayList<String> Contactos) {
+        this.Contactos = Contactos;
+    }
+
     @Override
     public String toString() {
-        return "Cuenta{" + "Usuario=" + Usuario + ", Contrasena=" + Contrasena + ", Nombre=" + Nombre + ", Pais=" + Pais + ", Edad=" + Edad + ", Sexo=" + Sexo + ", FechaDeCreacion=" + FechaDeCreacion + ", UltimoAcceso=" + UltimoAcceso + ", Entrada=" + Entrada + ", Salida=" + Salida + ", Spam=" + Spam + ", Papelera=" + Papelera + '}';
+        return "Cuenta{" + "Usuario=" + Usuario + ", Contrasena=" + Contrasena + ", Nombre=" + Nombre + ", Pais=" + Pais + ", Edad=" + Edad + ", Sexo=" + Sexo + ", FechaDeCreacion=" + FechaDeCreacion + ", UltimoAcceso=" + UltimoAcceso + ", BandejaDeEntrada=" + BandejaDeEntrada + ", Salida=" + Salida + ", Spam=" + Spam + ", Papelera=" + Papelera + '}';
     }
 
 }

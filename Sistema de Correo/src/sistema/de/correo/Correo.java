@@ -86,13 +86,17 @@ public class Correo implements Serializable {
         this.Contenido = Contenido;
     }
 
+    public String getAsunto() {
+        return Asunto;
+    }
+
+    public void setAsunto(String Asunto) {
+        this.Asunto = Asunto;
+    }
+
     @Override
     public String toString() {
-        if ("".equals(Asunto)) {
-            return Remitente;
-        }else{
-            return Asunto;
-        }
+        return Asunto + " | " + Remitente;
     }
 
 }

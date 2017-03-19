@@ -5,10 +5,16 @@
  */
 package sistema.de.correo;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,8 +27,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     public VentanaPrincipal() {
         initComponents();
+
         Cuentas.add(new Cuenta("jorge@minigmail.com", "1234",
                 "Jorge Álvarez", "Honduras", 22, "M", new Date(), new Date()));
+        Cuentas.get(0).getBandejaDeEntrada().add("0");
+        admCorreos.leerArchivo();
+        Correos = admCorreos.getCorreos();
+        iDContador = Correos.size();
+        admCuentas.leerArchivo();
+        Cuentas = admCuentas.getCuentas();
     }
 
     /**
@@ -34,7 +47,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        BandejasBg = new javax.swing.ButtonGroup();
         CrearCuentaJd = new javax.swing.JDialog();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -77,7 +89,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         AsuntoNuevoCorreoTf = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        ContactosNuevoCorreoCb = new javax.swing.JComboBox<>();
+        jButton16 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -90,12 +103,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jList1 = new javax.swing.JList<>();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        TablaContactos = new javax.swing.JTable();
+        ContactoContactosTf = new javax.swing.JTextField();
+        ContactoContactosCb = new javax.swing.JComboBox<>();
+        AgregarContactosBt = new javax.swing.JButton();
+        ModificarContactosBt = new javax.swing.JButton();
+        EliminarContactosBt = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jButton11 = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -125,6 +138,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton14 = new javax.swing.JButton();
         jLabel27 = new javax.swing.JLabel();
         jButton15 = new javax.swing.JButton();
+        BandejasBg = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
         CorreoLoginTf = new javax.swing.JTextField();
@@ -224,11 +238,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        VentanaDeUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                VentanaDeUsuarioKeyPressed(evt);
+            }
+        });
+
+        PrincipalTp.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PrincipalTpStateChanged(evt);
+            }
+        });
+
+        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel1KeyPressed(evt);
+            }
+        });
+
         BandejasBg.add(jToggleButton1);
         jToggleButton1.setText("Bandeja de entrada");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jToggleButton1ActionPerformed(evt);
+            }
+        });
+        jToggleButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jToggleButton1KeyPressed(evt);
             }
         });
 
@@ -363,6 +400,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel13.setText("Asunto");
 
         jButton5.setText("Limpiar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton16.setText("Agregar destinatario");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -381,12 +425,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(DestinatarioNuevoCorreoTf, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                             .addComponent(AsuntoNuevoCorreoTf))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(ContactosNuevoCorreoCb, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                            .addComponent(jButton16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -397,7 +442,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(DestinatarioNuevoCorreoTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ContactosNuevoCorreoCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton16))
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
@@ -410,7 +456,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(29, 29, 29)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -481,26 +527,28 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         PrincipalTp.addTab("Chat", jPanel3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaContactos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane6.setViewportView(jTable1);
+        jScrollPane6.setViewportView(TablaContactos);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ContactoContactosCb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton8.setText("Agregar");
+        AgregarContactosBt.setText("Agregar");
+        AgregarContactosBt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgregarContactosBtActionPerformed(evt);
+            }
+        });
 
-        jButton9.setText("Modificar");
+        ModificarContactosBt.setText("Modificar");
 
-        jButton10.setText("Eliminar");
+        EliminarContactosBt.setText("Eliminar");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -512,14 +560,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 758, Short.MAX_VALUE)
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox2, 0, 326, Short.MAX_VALUE)
-                            .addComponent(jTextField2))
+                            .addComponent(ContactoContactosCb, 0, 326, Short.MAX_VALUE)
+                            .addComponent(ContactoContactosTf))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
+                            .addComponent(AgregarContactosBt, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ModificarContactosBt, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(EliminarContactosBt, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -528,13 +576,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton8))
+                    .addComponent(ContactoContactosTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AgregarContactosBt))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
+                    .addComponent(ContactoContactosCb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ModificarContactosBt)
+                    .addComponent(EliminarContactosBt))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                 .addContainerGap())
@@ -861,8 +909,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         DefaultListModel modelo = new DefaultListModel();
         for (Correo c : Correos) {
-            for (int i = 0; i < UsuarioActual.getEntrada().size(); i++) {
-                if (c.getID().equals(UsuarioActual.getEntrada().get(i))) {
+            for (int i = 0; i < UsuarioActual.getBandejaDeEntrada().size(); i++) {
+                if (c.getID().equals(UsuarioActual.getBandejaDeEntrada().get(i))) {
                     modelo.addElement(c);
                 }
             }
@@ -872,14 +920,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void CorreosBandejasLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CorreosBandejasLiMouseClicked
         // TODO add your handling code here:
-        int pos = CorreosBandejasLi.getSelectedIndex();
-        RemitenteBandejasTf.setText(Correos.get(pos).getRemitente());
-        DestinatarioBandejasTf.setText(Correos.get(pos).getDestinatario());
-        ContenidoBandejasTa.setText(Correos.get(pos).getContenido());
+        try {
+            int pos = CorreosBandejasLi.getSelectedIndex();
+            RemitenteBandejasTf.setText(Correos.get(pos).getRemitente());
+            DestinatarioBandejasTf.setText(Correos.get(pos).getDestinatario());
+            ContenidoBandejasTa.setText(Correos.get(pos).getContenido());
+            AsuntoBandejasTf.setText(Correos.get(pos).getAsunto());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(VentanaDeUsuario, "No hay nada en la bandeja");
+        }
     }//GEN-LAST:event_CorreosBandejasLiMouseClicked
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
+        boolean seEnvio = false;
         for (Cuenta c : Cuentas) {
             if (c.getUsuario().equalsIgnoreCase(DestinatarioNuevoCorreoTf.getText())) {
                 Correos.add(new Correo());
@@ -887,18 +941,96 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 Correos.get(pos).setContenido(ContenidoNuevoCorreoTa.getText());
                 Correos.get(pos).setRemitente(UsuarioActual.getUsuario());
                 Correos.get(pos).setDestinatario(DestinatarioNuevoCorreoTf.getText());
+                Correos.get(pos).setAsunto(AsuntoNuevoCorreoTf.getText());
                 Correos.get(pos).setID("" + iDContador);
-                c.getEntrada().add("" + iDContador);
+                c.getBandejaDeEntrada().add("" + iDContador);
                 iDContador++;
                 JOptionPane.showMessageDialog(VentanaDeUsuario,
                         "Su correo se ha enviado exitosamente a: \n"
                         + DestinatarioNuevoCorreoTf.getText());
-                DestinatarioBandejasTf.setText("");
+                DestinatarioNuevoCorreoTf.setText("");
                 AsuntoNuevoCorreoTf.setText("");
                 ContenidoNuevoCorreoTa.setText("");
+                seEnvio = true;
+                admCorreos.setCorreos(Correos);
+                try {
+                    admCorreos.escribirArchivo();
+                } catch (IOException ex) {
+                    Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
+        if (!seEnvio) {
+            JOptionPane.showMessageDialog(VentanaDeUsuario, "No se encontró la cuenta");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void PrincipalTpStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PrincipalTpStateChanged
+        // TODO add your handling code here:
+        if (PrincipalTp.getSelectedIndex() == 1) {
+            DefaultComboBoxModel modelo = new DefaultComboBoxModel();
+            for (String c : UsuarioActual.getContactos()) {
+                modelo.addElement(c);
+            }
+            ContactosNuevoCorreoCb.setModel(modelo);
+        }
+        if (PrincipalTp.getSelectedIndex() == 3) {
+
+        }
+    }//GEN-LAST:event_PrincipalTpStateChanged
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        DestinatarioNuevoCorreoTf.setText("");
+        AsuntoNuevoCorreoTf.setText("");
+        ContenidoNuevoCorreoTa.setText("");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void AgregarContactosBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarContactosBtActionPerformed
+        // TODO add your handling code here:
+        UsuarioActual.getContactos().add(ContactoContactosTf.getText());
+    }//GEN-LAST:event_AgregarContactosBtActionPerformed
+
+    private void jToggleButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jToggleButton1KeyPressed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_jToggleButton1KeyPressed
+
+    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyChar() == '+') {
+            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() - 1);
+        }
+        if (evt.getKeyChar() == '-') {
+            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() + 1);
+        }
+    }//GEN-LAST:event_jPanel1KeyPressed
+
+    private void VentanaDeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VentanaDeUsuarioKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyChar() == '+') {
+            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() - 1);
+        }
+
+        if (evt.getKeyChar() == '-') {
+            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() + 1);
+        }
+    }//GEN-LAST:event_VentanaDeUsuarioKeyPressed
+
+    private void actualizarContactos() {
+        TablaContactos.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Usuario", "Nombre", "Último Acceso"
+                }
+        ));
+        DefaultComboBoxModel mComboBox = new DefaultComboBoxModel();
+        for (String c : UsuarioActual.getContactos()) {
+            mComboBox.addElement(c);
+            Object[] fila
+                    = {};
+        }
+    }
 
     /**
      * @param args the command line arguments
@@ -936,9 +1068,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AgregarContactosBt;
     private java.awt.TextField AsuntoBandejasTf;
     private javax.swing.JTextField AsuntoNuevoCorreoTf;
     private javax.swing.ButtonGroup BandejasBg;
+    private javax.swing.JComboBox<String> ContactoContactosCb;
+    private javax.swing.JTextField ContactoContactosTf;
+    private javax.swing.JComboBox<String> ContactosNuevoCorreoCb;
     private javax.swing.JTextArea ContenidoBandejasTa;
     private javax.swing.JTextArea ContenidoNuevoCorreoTa;
     private javax.swing.JPasswordField ContrasenaLoginTf;
@@ -949,35 +1085,34 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private java.awt.TextField DestinatarioBandejasTf;
     private javax.swing.JTextField DestinatarioNuevoCorreoTf;
     private javax.swing.JTextField EdadLoginTf;
+    private javax.swing.JButton EliminarContactosBt;
     private javax.swing.JCheckBox MarcarLeidoCb;
+    private javax.swing.JButton ModificarContactosBt;
     private javax.swing.JTextField NombreLoginTf;
     private javax.swing.JTextField PaisLoginTf;
     private javax.swing.JTabbedPane PrincipalTp;
     private java.awt.TextField RemitenteBandejasTf;
     private javax.swing.JRadioButton SexoFRb;
     private javax.swing.JRadioButton SexoMRb;
+    private javax.swing.JTable TablaContactos;
     private javax.swing.JTextField UsuarioLoginTf;
     private javax.swing.JDialog VentanaDeUsuario;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1022,11 +1157,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JSpinner jSpinner1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
@@ -1040,4 +1173,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     static ArrayList<Correo> Correos = new ArrayList();
     static Cuenta UsuarioActual;
     static int iDContador = 0;
+    File ArchivoDeCorreos = new File("./Correos.sdc");
+    File ArchivoDeCuentas = new File("./Cuentas.sdc");
+    AdminCorreos admCorreos = new AdminCorreos(ArchivoDeCorreos);
+    AdminCuentas admCuentas = new AdminCuentas(ArchivoDeCuentas);
 }
