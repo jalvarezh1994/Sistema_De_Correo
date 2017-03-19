@@ -62,6 +62,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         EdadLoginTf = new javax.swing.JTextField();
         SexoMRb = new javax.swing.JRadioButton();
         SexoFRb = new javax.swing.JRadioButton();
+        jLabel28 = new javax.swing.JLabel();
         VentanaDeUsuario = new javax.swing.JDialog();
         PrincipalTp = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
@@ -171,6 +172,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         SexoFRb.setText("F");
 
+        jLabel28.setText("@minigmail.com");
+
         javax.swing.GroupLayout CrearCuentaJdLayout = new javax.swing.GroupLayout(CrearCuentaJd.getContentPane());
         CrearCuentaJd.getContentPane().setLayout(CrearCuentaJdLayout);
         CrearCuentaJdLayout.setHorizontalGroup(
@@ -190,20 +193,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                     .addComponent(jLabel9))
                                 .addGap(40, 40, 40)
                                 .addGroup(CrearCuentaJdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(EdadLoginTf)
+                                    .addComponent(PaisLoginTf)
+                                    .addComponent(ContrasenaLoginTf, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                                    .addComponent(NombreLoginTf)
                                     .addGroup(CrearCuentaJdLayout.createSequentialGroup()
-                                        .addComponent(SexoMRb)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(SexoFRb))
-                                    .addGroup(CrearCuentaJdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(EdadLoginTf)
-                                        .addComponent(PaisLoginTf)
-                                        .addComponent(UsuarioLoginTf)
-                                        .addComponent(ContrasenaLoginTf, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                                        .addComponent(NombreLoginTf))))))
+                                        .addGroup(CrearCuentaJdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(CrearCuentaJdLayout.createSequentialGroup()
+                                                .addComponent(SexoMRb)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(SexoFRb))
+                                            .addGroup(CrearCuentaJdLayout.createSequentialGroup()
+                                                .addComponent(UsuarioLoginTf, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(jLabel28)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addGroup(CrearCuentaJdLayout.createSequentialGroup()
                         .addGap(83, 83, 83)
                         .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         CrearCuentaJdLayout.setVerticalGroup(
             CrearCuentaJdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +219,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(CrearCuentaJdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(UsuarioLoginTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UsuarioLoginTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel28))
                 .addGap(18, 18, 18)
                 .addGroup(CrearCuentaJdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
@@ -885,6 +894,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         } else {
             Cuentas.get(pos).setSexo("F");
         }
+        admCuentas.setCuentas(Cuentas);
+        try {
+            admCuentas.escribirArchivo();
+        } catch (IOException ex) {
+            Logger.getLogger(VentanaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -1133,6 +1148,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
