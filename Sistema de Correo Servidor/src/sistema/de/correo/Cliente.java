@@ -23,7 +23,7 @@ public class Cliente extends Thread {
 
     private static Socket so;
     private ArregloCuentas arrCuentas;
-    private static ArrayList<Cliente> Clientes = new ArrayList();
+    private ArregloClientes arrClientes;
     private static File arch = new File("./Cuentas.sdc");
     private static AdminCuentas admCuentas = new AdminCuentas(arch);
 
@@ -73,10 +73,10 @@ public class Cliente extends Thread {
     }
 
     public void finalizar() {
-        for (int i = 0; i < Clientes.size(); i++) {
+        for (int i = 0; i < arrClientes.getClientes().size(); i++) {
             ObjectOutputStream oos = null;
             try {
-                oos = new ObjectOutputStream(Clientes.get(i).getSo().getOutputStream());
+                oos = new ObjectOutputStream(arrClientes.getClientes().get(i).getSo().getOutputStream());
                 oos.writeObject(arrCuentas.getCuentas());
                 oos.flush();
             } catch (IOException ex) {
@@ -130,12 +130,12 @@ public class Cliente extends Thread {
         Cliente.admCuentas = admCuentas;
     }
 
-    public ArrayList<Cliente> getClientes() {
-        return Clientes;
+    public ArregloClientes getArrClientes() {
+        return arrClientes;
     }
 
-    public void setClientes(ArrayList<Cliente> Clientes) {
-        this.Clientes = Clientes;
+    public void setArrClientes(ArregloClientes arrClientes) {
+        this.arrClientes = arrClientes;
     }
 
 }

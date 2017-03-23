@@ -20,7 +20,7 @@ import java.util.Date;
 public class SistemaDeCorreoServidor {
 
     public static ArregloCuentas arrCuentas = new ArregloCuentas();
-    public static ArrayList<Cliente> Clientes = new ArrayList();
+    public static ArregloClientes arrClientes = new ArregloClientes();
     public static File archivo = new File("./Cuentas.sdc");
     public static AdminCuentas admCuentas = new AdminCuentas(archivo);
 
@@ -37,9 +37,9 @@ public class SistemaDeCorreoServidor {
             System.out.println("Se conectó un cliente");
             Cliente c = new Cliente(soCliente);
             c.setArrCuentas(arrCuentas);
-            c.setClientes(Clientes);
-            Clientes.add(c);
-            Clientes.get(Clientes.size() - 1).start();
+            c.setArrClientes(arrClientes);
+            arrClientes.getClientes().add(c);
+            arrClientes.getClientes().get(arrClientes.getClientes().size() - 1).start();
         } while (true);
     }
 

@@ -78,10 +78,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         VentanaDeUsuario = new javax.swing.JDialog();
         PrincipalTp = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jToggleButton2 = new javax.swing.JToggleButton();
-        jToggleButton3 = new javax.swing.JToggleButton();
-        jToggleButton4 = new javax.swing.JToggleButton();
+        BandejaDeEntradaTb = new javax.swing.JToggleButton();
+        BandejaDeSalidaTb = new javax.swing.JToggleButton();
+        SPAMTb = new javax.swing.JToggleButton();
+        PapeleraTb = new javax.swing.JToggleButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         CorreosBandejasLi = new javax.swing.JList<>();
         MarcarLeidoCb = new javax.swing.JCheckBox();
@@ -165,6 +165,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
 
         jLabel4.setText("Usuario");
 
@@ -280,32 +281,42 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        BandejasBg.add(jToggleButton1);
-        jToggleButton1.setText("Bandeja de entrada");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        BandejasBg.add(BandejaDeEntradaTb);
+        BandejaDeEntradaTb.setText("Bandeja de entrada");
+        BandejaDeEntradaTb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                BandejaDeEntradaTbActionPerformed(evt);
             }
         });
-        jToggleButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+        BandejaDeEntradaTb.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jToggleButton1KeyPressed(evt);
+                BandejaDeEntradaTbKeyPressed(evt);
             }
         });
 
-        BandejasBg.add(jToggleButton2);
-        jToggleButton2.setText("Bandeja de salida");
-        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+        BandejasBg.add(BandejaDeSalidaTb);
+        BandejaDeSalidaTb.setText("Bandeja de salida");
+        BandejaDeSalidaTb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton2ActionPerformed(evt);
+                BandejaDeSalidaTbActionPerformed(evt);
             }
         });
 
-        BandejasBg.add(jToggleButton3);
-        jToggleButton3.setText("SPAM");
+        BandejasBg.add(SPAMTb);
+        SPAMTb.setText("SPAM");
+        SPAMTb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SPAMTbActionPerformed(evt);
+            }
+        });
 
-        BandejasBg.add(jToggleButton4);
-        jToggleButton4.setText("Papelera");
+        BandejasBg.add(PapeleraTb);
+        PapeleraTb.setText("Papelera");
+        PapeleraTb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PapeleraTbActionPerformed(evt);
+            }
+        });
 
         CorreosBandejasLi.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -345,13 +356,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BandejaDeEntradaTb, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(BandejaDeSalidaTb, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(SPAMTb, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(PapeleraTb, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
@@ -382,10 +393,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(29, 29, 29)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jToggleButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(BandejaDeEntradaTb, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BandejaDeSalidaTb, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SPAMTb, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PapeleraTb, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(RemitenteBandejasTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -883,6 +894,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel12.setText("@minigmail.com");
 
+        jButton10.setText("jButton10");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -911,6 +929,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel12)))))
                 .addGap(27, 27, 27))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton10)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -928,15 +950,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton10)
+                .addGap(8, 8, 8))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+    private void BandejaDeSalidaTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BandejaDeSalidaTbActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton2ActionPerformed
+        DefaultListModel modelo = new DefaultListModel();
+        for (int i = 0; i < UsuarioActual.getSalida().size(); i++) {
+            modelo.addElement(UsuarioActual.getSalida().get(i));
+        }
+        CorreosBandejasLi.setModel(modelo);
+    }//GEN-LAST:event_BandejaDeSalidaTbActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -1002,19 +1031,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void BandejaDeEntradaTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BandejaDeEntradaTbActionPerformed
         // TODO add your handling code here:
         DefaultListModel modelo = new DefaultListModel();
         for (int i = 0; i < UsuarioActual.getBandejaDeEntrada().size(); i++) {
             modelo.addElement(UsuarioActual.getBandejaDeEntrada().get(i));
         }
         CorreosBandejasLi.setModel(modelo);
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_BandejaDeEntradaTbActionPerformed
 
     private void CorreosBandejasLiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CorreosBandejasLiMouseClicked
         // TODO add your handling code here:
         try {
-
+            int a=CorreosBandejasLi.getSelectedIndex();
+            Correo CorreoActual=null;
+            if (BandejaDeEntradaTb.isSelected()) {
+                CorreoActual=UsuarioActual.getBandejaDeEntrada().get(a);
+            }
+            if (BandejaDeSalidaTb.isSelected()) {
+                CorreoActual=UsuarioActual.getSalida().get(a);
+            }
+            if (SPAMTb.isSelected()) {
+                CorreoActual=UsuarioActual.getSalida().get(a);
+            }
+            if (PapeleraTb.isSelected()) {
+                CorreoActual=UsuarioActual.getPapelera().get(a);
+            }
+            RemitenteBandejasTf.setText(CorreoActual.getRemitente());
+            DestinatarioBandejasTf.setText(CorreoActual.getDestinatario());
+            AsuntoBandejasTf.setText(CorreoActual.getAsunto());
+            ContenidoBandejasTp.setText(CorreoActual.getContenido());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(VentanaDeUsuario, "No hay nada en la bandeja");
         }
@@ -1072,29 +1118,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         UsuarioActual.getContactos().add(ContactoContactosTf.getText());
     }//GEN-LAST:event_AgregarContactosBtActionPerformed
 
-    private void jToggleButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jToggleButton1KeyPressed
+    private void BandejaDeEntradaTbKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BandejaDeEntradaTbKeyPressed
         // TODO add your handling code here:
 
-    }//GEN-LAST:event_jToggleButton1KeyPressed
+    }//GEN-LAST:event_BandejaDeEntradaTbKeyPressed
 
     private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
         // TODO add your handling code here:
         if (evt.getKeyChar() == '+') {
-            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() - 1);
+            BandejaDeEntradaTb.setLocation(BandejaDeEntradaTb.getX(), BandejaDeEntradaTb.getY() - 1);
         }
         if (evt.getKeyChar() == '-') {
-            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() + 1);
+            BandejaDeEntradaTb.setLocation(BandejaDeEntradaTb.getX(), BandejaDeEntradaTb.getY() + 1);
         }
     }//GEN-LAST:event_jPanel1KeyPressed
 
     private void VentanaDeUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_VentanaDeUsuarioKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyChar() == '+') {
-            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() - 1);
+            BandejaDeEntradaTb.setLocation(BandejaDeEntradaTb.getX(), BandejaDeEntradaTb.getY() - 1);
         }
 
         if (evt.getKeyChar() == '-') {
-            jToggleButton1.setLocation(jToggleButton1.getX(), jToggleButton1.getY() + 1);
+            BandejaDeEntradaTb.setLocation(BandejaDeEntradaTb.getX(), BandejaDeEntradaTb.getY() + 1);
         }
     }//GEN-LAST:event_VentanaDeUsuarioKeyPressed
 
@@ -1127,6 +1173,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void SPAMTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SPAMTbActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel modelo = new DefaultListModel();
+        for (int i = 0; i < UsuarioActual.getSpam().size(); i++) {
+            modelo.addElement(UsuarioActual.getSpam().get(i));
+        }
+        CorreosBandejasLi.setModel(modelo);
+    }//GEN-LAST:event_SPAMTbActionPerformed
+
+    private void PapeleraTbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PapeleraTbActionPerformed
+        // TODO add your handling code here:
+        DefaultListModel modelo = new DefaultListModel();
+        for (int i = 0; i < UsuarioActual.getPapelera().size(); i++) {
+            modelo.addElement(UsuarioActual.getPapelera().get(i));
+        }
+        CorreosBandejasLi.setModel(modelo);
+    }//GEN-LAST:event_PapeleraTbActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(ha.getCuentas());
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     private void actualizarContactos() {
         TablaContactos.setModel(new javax.swing.table.DefaultTableModel(
@@ -1182,6 +1251,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton AgregarContactosBt;
     private java.awt.TextField AsuntoBandejasTf;
     private javax.swing.JTextField AsuntoNuevoCorreoTf;
+    private javax.swing.JToggleButton BandejaDeEntradaTb;
+    private javax.swing.JToggleButton BandejaDeSalidaTb;
     private javax.swing.ButtonGroup BandejasBg;
     private javax.swing.ButtonGroup ConfiguracionBg;
     private javax.swing.JComboBox<String> ContactoContactosCb;
@@ -1209,8 +1280,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField NombreCrearCuentaTf;
     private javax.swing.JTextField PaisConfiguracionTf;
     private javax.swing.JTextField PaisCrearCuentaTf;
+    private javax.swing.JToggleButton PapeleraTb;
     private javax.swing.JTabbedPane PrincipalTp;
     private java.awt.TextField RemitenteBandejasTf;
+    private javax.swing.JToggleButton SPAMTb;
     private javax.swing.JRadioButton SexoFConficuracionRb;
     private javax.swing.JRadioButton SexoFRb;
     private javax.swing.JRadioButton SexoMConfiguracionRb;
@@ -1220,6 +1293,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField UsuarioCrearCuentaTf;
     private javax.swing.JDialog VentanaDeUsuario;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
@@ -1280,10 +1354,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     // End of variables declaration//GEN-END:variables
 }
