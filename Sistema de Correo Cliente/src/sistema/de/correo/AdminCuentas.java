@@ -16,6 +16,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sistema.de.correo.Cuenta;
 
 /**
  *
@@ -75,7 +76,7 @@ public class AdminCuentas {
             FileInputStream fis = new FileInputStream(archivo);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            while ((c=(Cuenta)ois.readObject())!=null) {
+            while ((c = (Cuenta) ois.readObject()) != null) {
                 cuentas.add(c);
             }
 

@@ -16,23 +16,23 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import sistema.de.correo.Cuenta;
 
 /**
  *
  * @author ofici
  */
-public class AdminCorreos {
+public class AdminCuentas {
 
     File archivo;
-    ArrayList<Correo> correos = new ArrayList();
+    ArrayList<Cuenta> cuentas = new ArrayList();
 
-    public AdminCorreos() {
+    public AdminCuentas() {
     }
 
-    public AdminCorreos(File archivo) {
+    public AdminCuentas(File archivo) {
         this.archivo = archivo;
     }
-    private static final Logger LOG = Logger.getLogger(AdminCorreos.class.getName());
 
     public File getArchivo() {
         return archivo;
@@ -42,12 +42,12 @@ public class AdminCorreos {
         this.archivo = archivo;
     }
 
-    public ArrayList<Correo> getCorreos() {
-        return correos;
+    public ArrayList<Cuenta> getCuentas() {
+        return cuentas;
     }
 
-    public void setCorreos(ArrayList<Correo> correos) {
-        this.correos = correos;
+    public void setCuentas(ArrayList<Cuenta> cuentas) {
+        this.cuentas = cuentas;
     }
 
     public void escribirArchivo() throws IOException {
@@ -56,7 +56,7 @@ public class AdminCorreos {
             FileOutputStream fos = new FileOutputStream(archivo, true);
             ObjectOutputStream oos = new ObjectOutputStream(fos);
 
-            for (Correo c : correos) {
+            for (Cuenta c : cuentas) {
                 oos.writeObject(c);
             }
             oos.flush();
@@ -65,19 +65,19 @@ public class AdminCorreos {
             fos.close();
 
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(AdminCorreos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminCuentas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     public void leerArchivo() {
-        correos.clear();
-        Correo c;
+        cuentas.clear();
+        Cuenta c;
         try {
             FileInputStream fis = new FileInputStream(archivo);
             ObjectInputStream ois = new ObjectInputStream(fis);
 
-            while ((c=(Correo)ois.readObject())!=null) {
-                correos.add(c);
+            while ((c = (Cuenta) ois.readObject()) != null) {
+                cuentas.add(c);
             }
 
         } catch (Exception e) {
